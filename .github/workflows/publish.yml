@@ -22,3 +22,5 @@ jobs:
       run: dotnet nuget push /home/runner/work/cloudconvert-dotnet/cloudconvert-dotnet/.NugetPackages/SPD.CloudConvert.API.*.nupkg -k ${GITHUB_TOKEN} -s https://nuget.pkg.github.com/Sharp-Point-Data/index.json --skip-duplicate --no-symbols 1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Publish Package and PDB file to MyGet repository
+      run:  dotnet nuget push /home/runner/work/cloudconvert-dotnet/cloudconvert-dotnet/.NugetPackages/SPD.CloudConvert.API.*.nupkg -s https://www.myget.org/F/sharp-point-data-internal/auth/${{ secrets.MYGETAPIKEY }}/api/v3/index.json
